@@ -1,11 +1,26 @@
 .about {
   padding: 6rem 2rem;
   background-color: var(--background-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 70% 30%, rgba(99, 102, 241, 0.05) 0%, rgba(15, 23, 42, 0) 70%);
+  z-index: 1;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .content {
@@ -20,10 +35,12 @@
 }
 
 .sectionTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.75rem;
+  font-weight: 800;
   margin-bottom: 1.5rem;
   color: var(--text-color);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
 }
 
 .description {
@@ -31,6 +48,7 @@
   color: var(--secondary-color);
   margin-bottom: 1.5rem;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .stats {
@@ -42,32 +60,53 @@
 
 .statItem {
   text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.statItem:hover {
+  transform: translateY(-5px);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
 }
 
 .statNumber {
   display: block;
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--primary-color);
   margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .statLabel {
   font-size: 1rem;
   color: var(--secondary-color);
+  font-weight: 500;
 }
 
 .aboutLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: var(--primary-color);
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   margin-top: 1.5rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background: rgba(99, 102, 241, 0.1);
 }
 
 .aboutLink:hover {
-  color: #0069d9;
+  background: rgba(99, 102, 241, 0.2);
+  transform: translateY(-2px);
 }
 
 .imageContainer {
@@ -79,16 +118,30 @@
 .imagePlaceholder {
   width: 100%;
   height: 100%;
-  background-color: #f3f4f6;
-  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.imagePlaceholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 70%);
 }
 
 .placeholderText {
   color: var(--secondary-color);
   font-size: 1.25rem;
+  font-weight: 500;
 }
 
 @media (max-width: 968px) {
@@ -112,7 +165,7 @@
   }
 
   .sectionTitle {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .description {

@@ -1,79 +1,182 @@
 .contactPage {
   min-height: 100vh;
-  background-color: #f8fafc;
+  background-color: var(--background-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.contactPage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05) 0%, rgba(15, 23, 42, 0) 70%);
+  z-index: 1;
 }
 
 .hero {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: white;
   padding: 6rem 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  z-index: 1;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 800;
   margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
 }
 
 .description {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   max-width: 600px;
   margin: 0 auto;
   opacity: 0.9;
+  font-weight: 500;
 }
 
 .content {
   padding: 4rem 0;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+.whatsappSection {
+  max-width: 720px;
+  margin: 0 auto 4rem;
 }
 
-.formSection {
-  background: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+.whatsappCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.whatsappCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.whatsappCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+}
+
+.whatsappCard:hover::before {
+  opacity: 1;
+}
+
+.whatsappIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.whatsappTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  letter-spacing: -0.025em;
+}
+
+.whatsappDescription {
+  font-size: 1.125rem;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.whatsappButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.125rem;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);
+}
+
+.whatsappButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3);
 }
 
 .infoSection {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .infoTitle {
   font-size: 1.875rem;
-  font-weight: 600;
-  color: #1e293b;
+  font-weight: 700;
+  color: var(--text-color);
   margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: -0.025em;
 }
 
 .infoGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .infoCard {
-  background: white;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   padding: 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
 .infoCard:hover {
   transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
 }
 
 .infoIcon {
@@ -85,57 +188,55 @@
 .infoCardTitle {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--text-color);
   margin-bottom: 0.5rem;
 }
 
 .infoCardContent {
-  color: #64748b;
+  color: var(--secondary-color);
 }
 
 .socialLinks {
-  margin-top: 2rem;
+  text-align: center;
 }
 
 .socialTitle {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--text-color);
   margin-bottom: 1rem;
+  letter-spacing: -0.025em;
 }
 
 .socialGrid {
   display: flex;
+  justify-content: center;
   gap: 1rem;
 }
 
 .socialGrid a {
-  color: #1e293b;
+  color: var(--text-color);
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.5rem;
-  transition: all 0.2s ease;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .socialGrid a:hover {
-  background: #1e293b;
-  color: white;
-  border-color: #1e293b;
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
   .title {
     font-size: 2.5rem;
   }
 
   .description {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
   }
 
   .hero {
@@ -146,15 +247,35 @@
     padding: 2rem 0;
   }
 
+  .whatsappCard {
+    padding: 2rem;
+  }
+
+  .whatsappTitle {
+    font-size: 1.875rem;
+  }
+
+  .whatsappDescription {
+    font-size: 1rem;
+  }
+
+  .whatsappButton {
+    font-size: 1rem;
+    padding: 0.875rem 1.75rem;
+  }
+
   .infoGrid {
     grid-template-columns: 1fr;
   }
 
   .socialGrid {
     flex-direction: column;
+    align-items: center;
   }
 
   .socialGrid a {
+    width: 100%;
+    max-width: 300px;
     text-align: center;
   }
 } 

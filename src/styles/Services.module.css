@@ -1,6 +1,7 @@
 .servicesPage {
   min-height: 100vh;
-  background: var(--background-light);
+  background: var(--background-dark);
+  color: var(--text-light);
 }
 
 .hero {
@@ -40,7 +41,7 @@
 }
 
 .serviceCard {
-  background: white;
+  background: var(--background-tertiary);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -59,7 +60,7 @@
 
 .serviceCard h2 {
   font-size: 1.5rem;
-  color: var(--text-primary);
+  color: var(--text-light);
   margin-bottom: 1rem;
 }
 
@@ -108,19 +109,19 @@
   .hero {
     padding: 4rem 0;
   }
-
+  
   .title {
     font-size: 2.5rem;
   }
-
+  
   .description {
     font-size: 1.1rem;
   }
-
+  
   .content {
     padding: 3rem 0;
   }
-
+  
   .servicesGrid {
     grid-template-columns: 1fr;
   }

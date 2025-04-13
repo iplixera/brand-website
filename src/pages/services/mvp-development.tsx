@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import Layout from '@/components/layout/Layout';
-import styles from '../../styles/ServiceDetail.module.css';
+import styles from '@/styles/ServiceDetail.module.css';
 
 const MVPDevelopment = () => {
   const features = [
@@ -60,6 +61,27 @@ const MVPDevelopment = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <Layout>
       <div className={styles.servicePage}>
@@ -93,52 +115,81 @@ const MVPDevelopment = () => {
 
         <section className={styles.content}>
           <div className={styles.container}>
-            <div className={styles.features}>
-              <h2>Key Features</h2>
-              <div className={styles.featuresGrid}>
-                {features.map((feature, index) => (
-                  <motion.div 
-                    key={index}
-                    className={styles.featureCard}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                  >
-                    <span className={styles.featureIcon}>{feature.icon}</span>
-                    <h3>{feature.title}</h3>
-                    <p>{feature.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+            <motion.div 
+              className={styles.features}
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {features.map((feature, index) => (
+                <motion.div 
+                  key={index}
+                  className={styles.featureCard}
+                  variants={itemVariants}
+                  whileHover={{ 
+                    scale: 1.03,
+                    boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)"
+                  }}
+                >
+                  <span className={styles.featureIcon}>{feature.icon}</span>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </motion.div>
+              ))}
+            </motion.div>
 
             <div className={styles.process}>
-              <h2>Our Process</h2>
-              <div className={styles.processSteps}>
+              <motion.h2 
+                className={styles.processTitle}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                Our Process
+              </motion.h2>
+              <motion.div 
+                className={styles.processSteps}
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+              >
                 {process.map((step, index) => (
                   <motion.div 
                     key={index}
-                    className={styles.processStep}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
+                    className={styles.step}
+                    variants={itemVariants}
+                    whileHover={{ 
+                      scale: 1.03,
+                      boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)"
+                    }}
                   >
                     <div className={styles.stepNumber}>{step.step}</div>
                     <h3>{step.title}</h3>
                     <p>{step.description}</p>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
 
-            <div className={styles.cta}>
-              <h2>Ready to Build Your MVP?</h2>
-              <p>
-                Let's discuss your project and how we can help bring your vision to life.
-                Contact us today to get started.
+            <motion.div 
+              className={styles.cta}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <h2 className={styles.ctaTitle}>Ready to Build Your MVP?</h2>
+              <p className={styles.ctaDescription}>
+                Let's discuss your project and create a plan to bring your idea to life.
+                Our team is ready to help you build a successful MVP.
               </p>
-              <a href="/contact" className={styles.ctaButton}>Get in Touch</a>
-            </div>
+              <Link href="/contact" className={styles.ctaButton}>
+                Get Started
+              </Link>
+            </motion.div>
           </div>
         </section>
       </div>
