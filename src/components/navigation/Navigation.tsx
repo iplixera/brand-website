@@ -31,9 +31,7 @@ const Navigation: React.FC = () => {
         <div className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}>
           <ul className={styles.menuList}>
             <li><Link href="/services">Services</Link></li>
-            <li><Link href="/products">Products</Link></li>
             <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/resources">Resources</Link></li>
             <li><Link href="/contact">Contact</Link></li>
           </ul>
         </div>

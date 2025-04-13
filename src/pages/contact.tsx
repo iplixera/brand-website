@@ -8,17 +8,17 @@ const Contact = () => {
   const contactInfo = [
     {
       title: 'Email',
-      content: 'contact@plixera.com',
+      content: 'team@plixera.com',
       icon: '✉️'
     },
     {
       title: 'Phone',
-      content: '+1 (555) 123-4567',
+      content: '+971 58 55 44 057',
       icon: '📞'
     },
     {
       title: 'Location',
-      content: 'San Francisco, CA',
+      content: 'UAE & KSA',
       icon: '📍'
     }
   ];

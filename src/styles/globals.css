@@ -1,15 +1,43 @@
 :root {
-  /* Colors will be defined after brand guidelines are established */
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --background-color: #ffffff;
-  --text-color: #333333;
+  /* Primary colors */
+  --primary-color: #0070f3;
+  --primary-dark: #0051cc;
+  --primary-rgb: 0, 112, 243;
+  
+  /* Background colors */
+  --background-light: #ffffff;
+  --background-dark: #1a1a1a;
+  
+  /* Text colors */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-light: #ffffff;
+  --text-light-secondary: #cccccc;
+  
+  /* Border colors */
+  --border-color: #e0e0e0;
+  
+  /* Input colors */
+  --input-background: #ffffff;
+  
+  /* Status colors */
+  --error-color: #dc3545;
+  --error-background: #fde8e8;
+  --success-color: #28a745;
+  --success-background: #e8f5e9;
+  --disabled-color: #cccccc;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background-light: #1a1a1a;
+    --background-dark: #0a0a0a;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-light: #ffffff;
+    --text-light-secondary: #999999;
+    --border-color: #333333;
+    --input-background: #2a2a2a;
   }
 }
 
@@ -22,8 +50,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--text-primary);
+  background: var(--background-light);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
