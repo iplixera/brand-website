@@ -56,8 +56,9 @@ const About = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              We are a technology company focused on building innovative solutions for startups and enterprises.
-              Our mission is to empower businesses with cutting-edge technology that drives growth and success.
+              We are a technology company focused on MVP development for startups and creating innovative 
+              tech and commercial products. Our mission is to empower businesses with cutting-edge technology 
+              that drives growth and success.
             </motion.p>
           </div>
         </motion.section>
@@ -68,8 +69,8 @@ const About = () => {
               <h2>Our Mission</h2>
               <p>
                 At Plixera, we are dedicated to transforming ideas into successful digital products.
-                We specialize in MVP development for startups and provide innovative SaaS solutions
-                for frontend developers and real estate businesses.
+                We specialize in MVP development for startups and provide innovative tech and commercial 
+                products for businesses across various industries.
               </p>
             </div>
 

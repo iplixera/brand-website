@@ -5,27 +5,21 @@ import styles from './Services.module.css';
 const services = [
   {
     title: 'MVP Development',
-    description: 'Transform your ideas into a working product with our MVP development services. We focus on delivering core features quickly and efficiently.',
+    description: 'Transform your startup idea into a working product with our Vibe Coding methodology. We focus on rapid development and iterative improvements.',
     link: '/services/mvp-development',
     icon: '🚀'
   },
   {
-    title: 'Software Architecture',
-    description: 'Build scalable and maintainable applications with our expert software architecture services. We design robust systems that grow with your business.',
-    link: '/services/software-architecture',
-    icon: '🏗️'
+    title: 'Tech Products',
+    description: 'Enhance your development workflow with our suite of tech products including localization tools, URL shorteners, and API integration solutions.',
+    link: '/services/tech-products',
+    icon: '⚡'
   },
   {
-    title: 'Frontend Development',
-    description: 'Create beautiful, responsive user interfaces with our frontend development expertise. We use modern technologies to build engaging user experiences.',
-    link: '/services/frontend-development',
-    icon: '🎨'
-  },
-  {
-    title: 'Deployment & DevOps',
-    description: 'Streamline your development workflow with our deployment and DevOps services. We help you set up CI/CD pipelines and cloud infrastructure.',
-    link: '/services/deployment',
-    icon: '⚙️'
+    title: 'Commercial Products',
+    description: 'Streamline your business operations with our specialized commercial products for industries like real estate, healthcare, and retail.',
+    link: '/services/commercial-products',
+    icon: '🏢'
   }
 ];
 
@@ -35,7 +29,7 @@ const Services: React.FC = () => {
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>Our Services</h2>
         <p className={styles.sectionDescription}>
-          We offer a comprehensive range of services to help you build and scale your software products.
+          We offer MVP development services for startups and a range of tech and commercial products to help businesses thrive.
         </p>
         
         <div className={styles.serviceGrid}>

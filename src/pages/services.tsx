@@ -19,27 +19,27 @@ const Services = () => {
       ]
     },
     {
-      title: 'Frontend Developer Tools',
-      description: 'Enhance your development workflow with our suite of SaaS products designed for frontend developers.',
+      title: 'Tech Products',
+      description: 'Enhance your development workflow with our suite of tech products designed for developers and businesses.',
       icon: '⚡',
-      link: '/services/frontend-tools',
+      link: '/services/tech-products',
       features: [
         'Localization management',
-        'Deep linking solutions',
-        'QR code generation',
-        'API integration tools'
+        'URL shorteners',
+        'API integration tools',
+        'Developer utilities'
       ]
     },
     {
-      title: 'Real Estate Solutions',
-      description: 'Streamline your real estate business with our specialized SaaS products for property management and client engagement.',
+      title: 'Commercial Products',
+      description: 'Streamline your business operations with our specialized commercial products for various industries.',
       icon: '🏢',
-      link: '/services/real-estate',
+      link: '/services/commercial-products',
       features: [
-        'Property management',
-        'Client portal',
-        'Document management',
-        'Analytics dashboard'
+        'Real estate solutions',
+        'Healthcare management',
+        'Retail analytics',
+        'Industry-specific tools'
       ]
     }
   ];
@@ -68,8 +68,8 @@ const Services = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              We offer specialized solutions for startups and businesses, focusing on MVP development
-              and innovative SaaS products.
+              We offer MVP development services for startups and a range of tech and commercial products 
+              to help businesses streamline operations and enhance productivity.
             </motion.p>
           </div>
         </motion.section>
