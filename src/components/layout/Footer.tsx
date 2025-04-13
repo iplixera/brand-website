@@ -33,47 +33,53 @@ const Footer: React.FC = () => {
           <div className={styles.linksSection}>
             <div className={styles.linksGroup}>
               <h3 className={styles.linksTitle}>Services</h3>
-              <Link href="/services/mvp-development" className={styles.link}>
-                MVP Development
-              </Link>
-              <Link href="/services/web-development" className={styles.link}>
-                Web Development
-              </Link>
-              <Link href="/services/mobile-development" className={styles.link}>
-                Mobile Development
-              </Link>
-              <Link href="/services/ai-integration" className={styles.link}>
-                AI Integration
-              </Link>
+              <nav className={styles.linksList}>
+                <Link href="/services/mvp-development" className={styles.link}>
+                  MVP Development
+                </Link>
+                <Link href="/services/web-development" className={styles.link}>
+                  Web Development
+                </Link>
+                <Link href="/services/mobile-development" className={styles.link}>
+                  Mobile Development
+                </Link>
+                <Link href="/services/ai-integration" className={styles.link}>
+                  AI Integration
+                </Link>
+              </nav>
             </div>
 
             <div className={styles.linksGroup}>
               <h3 className={styles.linksTitle}>Company</h3>
-              <Link href="/about" className={styles.link}>
-                About Us
-              </Link>
-              <Link href="/contact" className={styles.link}>
-                Contact
-              </Link>
-              <Link href="/blog" className={styles.link}>
-                Blog
-              </Link>
-              <Link href="/careers" className={styles.link}>
-                Careers
-              </Link>
+              <nav className={styles.linksList}>
+                <Link href="/about" className={styles.link}>
+                  About Us
+                </Link>
+                <Link href="/contact" className={styles.link}>
+                  Contact
+                </Link>
+                <Link href="/blog" className={styles.link}>
+                  Blog
+                </Link>
+                <Link href="/careers" className={styles.link}>
+                  Careers
+                </Link>
+              </nav>
             </div>
 
             <div className={styles.linksGroup}>
               <h3 className={styles.linksTitle}>Contact</h3>
-              <a href="mailto:team@plixera.com" className={styles.link}>
-                team@plixera.com
-              </a>
-              <a href="https://wa.me/1234567890" className={styles.link}>
-                WhatsApp Preferred
-              </a>
-              <p className={styles.address}>
-                UAE - Sharjah Free Zone
-              </p>
+              <nav className={styles.linksList}>
+                <a href="mailto:team@plixera.com" className={styles.link}>
+                  team@plixera.com
+                </a>
+                <a href="https://wa.me/1234567890" className={styles.link}>
+                  WhatsApp Preferred
+                </a>
+                <p className={styles.address}>
+                  UAE - Sharjah Free Zone
+                </p>
+              </nav>
             </div>
           </div>
         </div>
