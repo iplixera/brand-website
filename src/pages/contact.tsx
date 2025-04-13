@@ -85,7 +85,7 @@ const Contact = () => {
                 <div className={styles.socialLinks}>
                   <h3 className={styles.socialTitle}>Follow Us</h3>
                   <div className={styles.socialGrid}>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://www.linkedin.com/company/iplixera" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
                     <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
                   </div>

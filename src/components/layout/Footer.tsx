@@ -76,7 +76,7 @@ const Footer = () => {
         <div className={styles.bottom}>
           <p>&copy; {currentYear} Plixera. All rights reserved.</p>
           <div className={styles.social}>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.linkedin.com/company/iplixera" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
             <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
