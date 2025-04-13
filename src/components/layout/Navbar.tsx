@@ -4,16 +4,12 @@ import { motion } from 'framer-motion';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 0);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -21,66 +17,57 @@ const Navbar = () => {
   }, []);
 
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
-          <span className={styles.logoText}>Plixera</span>
-          <span className={styles.logoDot}>.</span>
+          Vibe Coding
         </Link>
 
-        <nav className={`${styles.nav} ${mobileMenuOpen ? styles.mobileOpen : ''}`}>
-          <ul className={styles.navList}>
-            <li className={styles.navItem}>
-              <Link href="/about" className={styles.navLink}>
-                About
-              </Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link href="/services" className={styles.navLink}>
-                Services
-              </Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link href="/work" className={styles.navLink}>
-                Work
-              </Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link href="/contact" className={styles.navLink}>
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        <div className={styles.cta}>
-          <Link href="/contact" className={styles.ctaButton}>
-            <span>Ready to Vibe?</span>
-            <motion.span
-              className={styles.arrow}
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              →
-            </motion.span>
+        <div className={styles.desktopMenu}>
+          <Link href="/services" className={styles.menuItem}>
+            Services
+          </Link>
+          <Link href="/about" className={styles.menuItem}>
+            About
+          </Link>
+          <Link href="/contact" className={styles.menuItem}>
+            Contact
           </Link>
         </div>
 
-        <button 
-          className={`${styles.mobileToggle} ${mobileMenuOpen ? styles.open : ''}`}
+        <button
+          className={styles.mobileMenuButton}
           onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
+          aria-label="Toggle mobile menu"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <div className={`${styles.hamburger} ${isMobileMenuOpen ? styles.open : ''}`} />
         </button>
       </div>
-    </header>
+
+      {isMobileMenuOpen && (
+        <motion.div
+          className={styles.mobileMenu}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+        >
+          <Link href="/services" className={styles.mobileMenuItem} onClick={toggleMobileMenu}>
+            Services
+          </Link>
+          <Link href="/about" className={styles.mobileMenuItem} onClick={toggleMobileMenu}>
+            About
+          </Link>
+          <Link href="/contact" className={styles.mobileMenuItem} onClick={toggleMobileMenu}>
+            Contact
+          </Link>
+        </motion.div>
+      )}
+    </nav>
   );
 };
 

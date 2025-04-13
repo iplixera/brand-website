@@ -3,96 +3,78 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import styles from './Footer.module.css';
 
-const Footer: React.FC = () => {
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <div className={styles.grid}>
-          <div className={styles.brandSection}>
-            <Link href="/" className={styles.logo}>
-              Plixera
-            </Link>
-            <p className={styles.tagline}>
-              Building MVPs with Speed, Soul, and Flow
-            </p>
-            <div className={styles.socialLinks}>
-              <a href="https://twitter.com/plixera" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                Twitter
-              </a>
-              <span className={styles.linkSeparator}>•</span>
-              <a href="https://linkedin.com/company/plixera" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                LinkedIn
-              </a>
-              <span className={styles.linkSeparator}>•</span>
-              <a href="https://github.com/plixera" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                GitHub
-              </a>
-            </div>
-          </div>
-
-          <div className={styles.linksSection}>
-            <div className={styles.linksGroup}>
-              <h3 className={styles.linksTitle}>Services</h3>
-              <nav className={styles.linksList}>
-                <Link href="/services/mvp-development" className={styles.link}>
-                  MVP Development
-                </Link>
-                <Link href="/services/web-development" className={styles.link}>
-                  Web Development
-                </Link>
-                <Link href="/services/mobile-development" className={styles.link}>
-                  Mobile Development
-                </Link>
-                <Link href="/services/ai-integration" className={styles.link}>
-                  AI Integration
-                </Link>
-              </nav>
-            </div>
-
-            <div className={styles.linksGroup}>
-              <h3 className={styles.linksTitle}>Company</h3>
-              <nav className={styles.linksList}>
-                <Link href="/about" className={styles.link}>
-                  About Us
-                </Link>
-                <Link href="/contact" className={styles.link}>
-                  Contact
-                </Link>
-                <Link href="/blog" className={styles.link}>
-                  Blog
-                </Link>
-                <Link href="/careers" className={styles.link}>
-                  Careers
-                </Link>
-              </nav>
-            </div>
-
-            <div className={styles.linksGroup}>
-              <h3 className={styles.linksTitle}>Contact</h3>
-              <nav className={styles.linksList}>
-                <a href="mailto:team@plixera.com" className={styles.link}>
-                  team@plixera.com
-                </a>
-                <a href="https://wa.me/1234567890" className={styles.link}>
-                  WhatsApp Preferred
-                </a>
-                <p className={styles.address}>
-                  UAE - Sharjah Free Zone
-                </p>
-              </nav>
-            </div>
+        <div className={styles.column}>
+          <h3 className={styles.columnTitle}>About Us</h3>
+          <p className={styles.description}>
+            We build innovative digital solutions that transform ideas into reality. Our focus is on creating products that make a difference.
+          </p>
+          <div className={styles.socialLinks}>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+              Twitter
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+              LinkedIn
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+              GitHub
+            </a>
           </div>
         </div>
 
-        <div className={styles.bottom}>
+        <div className={styles.column}>
+          <h3 className={styles.columnTitle}>Services</h3>
+          <nav className={styles.links}>
+            <Link href="/services/mvp-development" className={styles.link}>
+              MVP Development
+            </Link>
+            <Link href="/services/tech-products" className={styles.link}>
+              Tech Products
+            </Link>
+            <Link href="/services/consulting" className={styles.link}>
+              Consulting
+            </Link>
+            <Link href="/services/custom-solutions" className={styles.link}>
+              Custom Solutions
+            </Link>
+          </nav>
+        </div>
+
+        <div className={styles.column}>
+          <h3 className={styles.columnTitle}>Contact</h3>
+          <div className={styles.contactInfo}>
+            <p className={styles.contactItem}>
+              <span className={styles.label}>Email:</span>
+              <a href="mailto:hello@vibecoding.com" className={styles.contactLink}>
+                hello@vibecoding.com
+              </a>
+            </p>
+            <p className={styles.contactItem}>
+              <span className={styles.label}>Location:</span>
+              <span>San Francisco, CA</span>
+            </p>
+            <p className={styles.contactItem}>
+              <span className={styles.label}>Hours:</span>
+              <span>Mon-Fri: 9AM-6PM PST</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.bottom}>
+        <div className={styles.container}>
           <p className={styles.copyright}>
-            © {new Date().getFullYear()} Plixera. All rights reserved.
+            © {currentYear} Vibe Coding. All rights reserved.
           </p>
           <div className={styles.legal}>
             <Link href="/privacy" className={styles.legalLink}>
               Privacy Policy
             </Link>
-            <span className={styles.linkSeparator}>•</span>
             <Link href="/terms" className={styles.legalLink}>
               Terms of Service
             </Link>
