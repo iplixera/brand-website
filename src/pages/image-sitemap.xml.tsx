@@ -1,11 +1,17 @@
 import { GetServerSideProps } from 'next';
+import { getImageMetadata } from '@/utils/imageOptimization';
+
+const baseUrl = 'https://plixera.com';
 
 const ImageSitemap = () => null;
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const baseUrl = 'https://vibecoding.com';
-  
   const images = [
+    {
+      url: '/images/hero.jpg',
+      title: 'Plixera Hero Image',
+      caption: 'Welcome to Plixera - Creative Tech Solutions',
+    },
     {
       url: '/images/logo.png',
       title: 'Vibe Coding Logo',
@@ -33,24 +39,29 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     }
   ];
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const imageSitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
             xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-      <url>
-        <loc>${baseUrl}</loc>
-        ${images.map(image => `
-          <image:image>
-            <image:loc>${baseUrl}${image.url}</image:loc>
-            <image:title>${image.title}</image:title>
-            <image:caption>${image.caption}</image:caption>
-          </image:image>
-        `).join('')}
-      </url>
+      ${images
+        .map((image) => {
+          const metadata = getImageMetadata(image.url);
+          return `
+            <url>
+              <loc>${baseUrl}${image.url}</loc>
+              <image:image>
+                <image:loc>${baseUrl}${image.url}</image:loc>
+                <image:title>${image.title}</image:title>
+                <image:caption>${image.caption}</image:caption>
+              </image:image>
+            </url>
+          `;
+        })
+        .join('')}
     </urlset>
   `;
 
   res.setHeader('Content-Type', 'text/xml');
-  res.write(sitemap);
+  res.write(imageSitemap);
   res.end();
 
   return {

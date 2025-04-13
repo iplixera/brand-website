@@ -30,6 +30,11 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   const fullTitle = title === 'Vibe Coding • Creative Tech' ? title : `${title} | Vibe Coding`;
 
+  const defaultTitle = 'Plixera - Creative Tech Solutions';
+  const defaultDescription = 'Plixera is a creative tech company specializing in web development, mobile apps, and digital solutions. Transform your ideas into reality with our expert team.';
+  const defaultOgImage = 'https://plixera.com/og-image.jpg';
+  const defaultOgUrl = 'https://plixera.com';
+
   return (
     <Head>
       {/* Basic Meta Tags */}

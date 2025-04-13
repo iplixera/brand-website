@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['vibecoding.com'],
+    domains: ['plixera.com', 'images.unsplash.com'],
   },
   i18n: {
     locales: ['en'],
@@ -41,7 +41,16 @@ const nextConfig = {
         ]
       }
     ];
-  }
+  },
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+    };
+    return config;
+  },
 };
 
 module.exports = nextConfig 
