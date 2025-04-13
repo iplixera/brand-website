@@ -24,12 +24,23 @@ const About = () => {
 
   const team = [
     {
-      name: 'Karim Magdy',
-      role: 'Founder & CEO',
-      bio: 'Experienced software architect and entrepreneur with a passion for building innovative solutions.',
-      image: '/team/karim.jpg'
+      name: 'Alex Chen',
+      role: 'Technical Lead',
+      bio: 'Experienced software architect with expertise in scalable systems and AI integration.',
+      image: '/team/tech-lead.jpg'
+    },
+    {
+      name: 'Sarah Johnson',
+      role: 'Product Strategist',
+      bio: 'Product specialist focused on translating business needs into innovative digital solutions.',
+      image: '/team/product-strategist.jpg'
+    },
+    {
+      name: 'Marcus Rodriguez',
+      role: 'UX/UI Designer',
+      bio: 'Creative designer passionate about creating intuitive and engaging user experiences.',
+      image: '/team/designer.jpg'
     }
-    // Add more team members as needed
   ];
 
   return (
