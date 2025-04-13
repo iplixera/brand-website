@@ -1,62 +1,61 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
 import styles from '../../styles/ServiceDetail.module.css';
 
-const Deployment = () => {
+const BackendDevelopment = () => {
   const features = [
     {
-      title: "CI/CD Pipeline Setup",
-      description: "Set up automated continuous integration and deployment pipelines for faster releases",
-      icon: "🔄"
+      title: "Scalable Architecture",
+      description: "Design and implement backend systems that can scale with your business growth",
+      icon: "🏗️"
     },
     {
-      title: "Cloud Infrastructure",
-      description: "Design and implement cloud infrastructure for scalability and reliability",
-      icon: "☁️"
+      title: "API Development",
+      description: "Build robust RESTful and GraphQL APIs for seamless frontend integration",
+      icon: "🔌"
     },
     {
-      title: "Container Orchestration",
-      description: "Manage containerized applications with Kubernetes and Docker",
-      icon: "🐳"
+      title: "Database Design",
+      description: "Optimize database schemas and queries for performance and reliability",
+      icon: "🗄️"
     },
     {
-      title: "Monitoring & Logging",
-      description: "Implement comprehensive monitoring and logging solutions for system visibility",
-      icon: "📊"
+      title: "Security Implementation",
+      description: "Implement industry-standard security practices to protect your data",
+      icon: "🔒"
     }
   ];
 
   const process = [
     {
       step: 1,
-      title: "Infrastructure Assessment",
-      description: "Evaluate current infrastructure and identify areas for improvement"
+      title: "Requirements Analysis",
+      description: "Understanding your backend requirements and system architecture needs"
     },
     {
       step: 2,
-      title: "DevOps Implementation",
-      description: "Set up CI/CD pipelines and implement DevOps best practices"
+      title: "Architecture Design",
+      description: "Designing a scalable and maintainable backend architecture"
     },
     {
       step: 3,
-      title: "Monitoring Setup",
-      description: "Implement comprehensive monitoring and alerting systems"
+      title: "Development",
+      description: "Building the backend with clean, efficient, and secure code"
     },
     {
       step: 4,
-      title: "Security Implementation",
-      description: "Implement security best practices throughout the deployment pipeline"
+      title: "Testing",
+      description: "Comprehensive testing including unit tests, integration tests, and API testing"
     },
     {
       step: 5,
       title: "Optimization",
-      description: "Optimize cloud resources and infrastructure costs"
+      description: "Performance optimization and code refinement for the best system performance"
     },
     {
       step: 6,
-      title: "Training & Documentation",
-      description: "Train your team and provide comprehensive documentation"
+      title: "Deployment",
+      description: "Smooth deployment process with CI/CD integration and monitoring setup"
     }
   ];
 
@@ -71,7 +70,7 @@ const Deployment = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Deployment & DevOps
+              Backend Development
             </motion.h1>
             <motion.p 
               className={styles.description}
@@ -79,7 +78,7 @@ const Deployment = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Streamline your development workflow and ensure reliable deployments with our DevOps expertise
+              Building robust, scalable, and secure backend systems to power your applications
             </motion.p>
           </div>
         </section>
@@ -125,8 +124,8 @@ const Deployment = () => {
             </section>
 
             <section className={styles.cta}>
-              <h2>Ready to Optimize Your Deployment?</h2>
-              <p>Let's streamline your development workflow and ensure reliable deployments.</p>
+              <h2>Ready to Build Your Backend?</h2>
+              <p>Let's create a robust, scalable, and secure backend system together.</p>
               <a href="/contact" className={styles.ctaButton}>Get Started</a>
             </section>
           </div>
@@ -136,4 +135,4 @@ const Deployment = () => {
   );
 };
 
-export default Deployment; 
+export default BackendDevelopment; 

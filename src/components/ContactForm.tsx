@@ -5,7 +5,8 @@ import styles from '../styles/ContactForm.module.css';
 interface FormData {
   name: string;
   email: string;
-  subject: string;
+  company: string;
+  service: string;
   message: string;
 }
 
@@ -13,7 +14,8 @@ const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    subject: '',
+    company: '',
+    service: '',
     message: '',
   });
 
@@ -34,10 +36,6 @@ const ContactForm: React.FC = () => {
       newErrors.email = 'Please enter a valid email address';
     }
 
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
-    }
-
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
     }
@@ -46,7 +44,7 @@ const ContactForm: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
@@ -66,7 +64,6 @@ const ContactForm: React.FC = () => {
     setSubmitStatus(null);
 
     try {
-      // Replace with your actual API endpoint
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -75,15 +72,18 @@ const ContactForm: React.FC = () => {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        throw new Error(data.message || 'Failed to send message');
       }
 
       setSubmitStatus('success');
       setFormData({
         name: '',
         email: '',
-        subject: '',
+        company: '',
+        service: '',
         message: '',
       });
     } catch (error) {
@@ -103,82 +103,101 @@ const ContactForm: React.FC = () => {
       <h2 className={styles.formTitle}>Send us a Message</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name *</label>
           <input
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={errors.name ? styles.errorInput : ''}
+            className={errors.name ? styles.inputError : ''}
           />
-          {errors.name && <span className={styles.error}>{errors.name}</span>}
+          {errors.name && <span className={styles.errorMessage}>{errors.name}</span>}
         </div>
 
         <div className={styles.formGroup}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email *</label>
           <input
             type="email"
             id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={errors.email ? styles.errorInput : ''}
+            className={errors.email ? styles.inputError : ''}
           />
-          {errors.email && <span className={styles.error}>{errors.email}</span>}
+          {errors.email && <span className={styles.errorMessage}>{errors.email}</span>}
         </div>
 
         <div className={styles.formGroup}>
-          <label htmlFor="subject">Subject</label>
+          <label htmlFor="company">Company</label>
           <input
             type="text"
-            id="subject"
-            name="subject"
-            value={formData.subject}
+            id="company"
+            name="company"
+            value={formData.company}
             onChange={handleChange}
-            className={errors.subject ? styles.errorInput : ''}
           />
-          {errors.subject && <span className={styles.error}>{errors.subject}</span>}
         </div>
 
         <div className={styles.formGroup}>
-          <label htmlFor="message">Message</label>
+          <label htmlFor="service">Service</label>
+          <select
+            id="service"
+            name="service"
+            value={formData.service}
+            onChange={handleChange}
+          >
+            <option value="">Select a service</option>
+            <option value="frontend">Frontend Development</option>
+            <option value="backend">Backend Development</option>
+            <option value="mvp">MVP Development</option>
+            <option value="architecture">Software Architecture</option>
+            <option value="devops">Deployment & DevOps</option>
+          </select>
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="message">Message *</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
             rows={5}
-            className={errors.message ? styles.errorInput : ''}
+            className={errors.message ? styles.inputError : ''}
           />
-          {errors.message && <span className={styles.error}>{errors.message}</span>}
+          {errors.message && <span className={styles.errorMessage}>{errors.message}</span>}
         </div>
 
-        <button
+        <motion.button
           type="submit"
           className={styles.submitButton}
           disabled={isSubmitting}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
-        </button>
+        </motion.button>
 
         {submitStatus === 'success' && (
           <motion.div
             className={styles.successMessage}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            Message sent successfully!
+            Thank you for your message! We'll get back to you soon.
           </motion.div>
         )}
 
         {submitStatus === 'error' && (
           <motion.div
             className={styles.errorMessage}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            Failed to send message. Please try again.
+            There was an error sending your message. Please try again later.
           </motion.div>
         )}
       </form>

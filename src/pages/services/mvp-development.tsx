@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Layout from '@/components/layout/Layout';
-import styles from '@/styles/ServiceDetail.module.css';
+import styles from '../../styles/ServiceDetail.module.css';
 
 const MVPDevelopment = () => {
   const features = [
