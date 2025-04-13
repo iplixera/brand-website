@@ -127,21 +127,4 @@
   .form {
     gap: 1rem;
   }
-}
-
-/* CSS Variables - Add these to your global CSS or root component */
-:root {
-  --primary-color: #0070f3;
-  --primary-dark: #0051cc;
-  --primary-rgb: 0, 112, 243;
-  --background-light: #ffffff;
-  --text-primary: #333333;
-  --text-secondary: #666666;
-  --border-color: #e0e0e0;
-  --input-background: #ffffff;
-  --error-color: #dc3545;
-  --error-background: #fde8e8;
-  --success-color: #28a745;
-  --success-background: #e8f5e9;
-  --disabled-color: #cccccc;
 } 
