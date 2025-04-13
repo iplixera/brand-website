@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
 import Link from 'next/link';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import styles from './Hero.module.css';
 
-const Hero: React.FC = () => {
+const Hero = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
   const controls = useAnimation();
 
   useEffect(() => {
@@ -26,74 +26,80 @@ const Hero: React.FC = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
-      opacity: 1,
       y: 0,
+      opacity: 1,
       transition: {
-        duration: 0.5,
-        ease: 'easeOut',
+        type: 'spring',
+        stiffness: 100,
+        damping: 15,
       },
     },
   };
 
   return (
-    <section ref={ref} className={styles.hero}>
-      <div className={styles.heroContent}>
-        <motion.div
-          className={styles.textContent}
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-        >
-          <motion.h1 className={styles.title} variants={itemVariants}>
-            Building Digital
-            <br />
-            <span className={styles.highlight}>Excellence</span>
-          </motion.h1>
-          
-          <motion.p className={styles.subtitle} variants={itemVariants}>
-            We create innovative solutions that drive business growth and transform ideas into reality
-          </motion.p>
-
-          <motion.div className={styles.stats} variants={itemVariants}>
-            <div className={styles.statItem}>
-              <div className={styles.statValue}>98%</div>
-              <div className={styles.statLabel}>Client Satisfaction</div>
-            </div>
-            <div className={styles.statItem}>
-              <div className={styles.statValue}>150+</div>
-              <div className={styles.statLabel}>Projects Delivered</div>
-            </div>
-            <div className={styles.statItem}>
-              <div className={styles.statValue}>10+</div>
-              <div className={styles.statLabel}>Years Experience</div>
-            </div>
-          </motion.div>
-
-          <motion.div className={styles.ctaContainer} variants={itemVariants}>
-            <Link href="/contact" className={`${styles.cta} ${styles.primaryCta}`}>
-              Start Your Project
-            </Link>
-            <Link href="/services" className={`${styles.cta} ${styles.secondaryCta}`}>
-              Explore Services
-            </Link>
-          </motion.div>
+    <section className={styles.hero} ref={ref}>
+      <motion.div
+        className={styles.heroContent}
+        variants={containerVariants}
+        initial="hidden"
+        animate={controls}
+      >
+        <motion.h1 className={styles.title} variants={itemVariants}>
+          MVPs with Speed, Soul, and Flow
+        </motion.h1>
+        <motion.p className={styles.subtitle} variants={itemVariants}>
+          Welcome to Vibe Coding, where we transform your ideas into reality with precision and style.
+        </motion.p>
+        <motion.div className={styles.ctaContainer} variants={itemVariants}>
+          <Link href="/contact" className={styles.primaryCta}>
+            Ready to Vibe?
+          </Link>
+          <Link href="/services" className={styles.secondaryCta}>
+            Explore Our Services
+          </Link>
         </motion.div>
 
-        <motion.div
-          className={styles.imageContent}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <div className={styles.imageWrapper}>
-            <div className={styles.imagePlaceholder}>
-              <div className={styles.imageOverlay} />
+        <motion.div className={styles.statsContainer} variants={itemVariants}>
+          <div className={styles.statItem}>
+            <div className={styles.statValue}>100%</div>
+            <div className={styles.statLabel}>Energy Level</div>
+            <div className={styles.meterContainer}>
+              <motion.div 
+                className={styles.meterFill} 
+                initial={{ width: 0 }}
+                animate={{ width: '100%' }}
+                transition={{ duration: 1.5, delay: 1 }}
+              />
+            </div>
+          </div>
+          <div className={styles.statItem}>
+            <div className={styles.statValue}>2-4</div>
+            <div className={styles.statLabel}>Weeks MVP Time</div>
+            <div className={styles.meterContainer}>
+              <motion.div 
+                className={styles.meterFill} 
+                initial={{ width: 0 }}
+                animate={{ width: '85%' }}
+                transition={{ duration: 1.5, delay: 1.2 }}
+              />
+            </div>
+          </div>
+          <div className={styles.statItem}>
+            <div className={styles.statValue}>∞</div>
+            <div className={styles.statLabel}>Creative Flow</div>
+            <div className={styles.meterContainer}>
+              <motion.div 
+                className={styles.meterFill} 
+                initial={{ width: 0 }}
+                animate={{ width: '95%' }}
+                transition={{ duration: 1.5, delay: 1.4 }}
+              />
             </div>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
