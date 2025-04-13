@@ -1,6 +1,6 @@
 .services {
   padding: 6rem 2rem;
-  background: var(--background-dark);
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
   position: relative;
   overflow: hidden;
 }
@@ -12,53 +12,57 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.05) 0%, rgba(15, 23, 42, 0) 70%);
-  z-index: 1;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.03) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
 }
 
 .sectionTitle {
+  font-size: 3rem;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 3rem;
-  font-size: 2.75rem;
-  font-weight: 800;
-  color: var(--text-light);
-  letter-spacing: -0.025em;
-  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #000000 0%, #333333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .sectionDescription {
-  font-size: 1.125rem;
-  color: var(--text-light);
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  line-height: 1.6;
-  opacity: 0.9;
-  font-weight: 400;
+  font-size: 1.25rem;
   text-align: center;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  line-height: 1.6;
 }
 
 .serviceGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
+  padding: 1rem;
 }
 
 .serviceCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  background: white;
+  border-radius: 1rem;
   padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .serviceCard::before {
@@ -67,16 +71,10 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 70%);
+  height: 4px;
+  background: linear-gradient(90deg, #000000, #333333);
   opacity: 0;
   transition: opacity 0.3s ease;
-}
-
-.serviceCard:hover {
-  transform: translateY(-5px);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
 }
 
 .serviceCard:hover::before {
@@ -86,69 +84,92 @@
 .serviceIcon {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  color: #6366f1;
   display: inline-block;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.serviceCard:hover .serviceIcon {
+  transform: scale(1.1);
 }
 
 .serviceTitle {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--text-light);
-  letter-spacing: -0.025em;
+  color: #000;
 }
 
 .serviceDescription {
-  font-size: 1rem;
-  color: var(--text-secondary);
+  color: #666;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
 
-.serviceLink {
-  display: inline-block;
-  color: #6366f1;
-  font-weight: 600;
-  text-decoration: none;
-  position: relative;
-  padding: 0.5rem 0;
-  transition: all 0.3s ease;
-  cursor: pointer;
+.serviceFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
 }
 
-.serviceLink::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #6366f1;
-  transition: width 0.3s ease;
+.serviceFeature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.featureIcon {
+  color: #000;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.serviceLink {
+  display: inline-flex;
+  align-items: center;
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.linkArrow {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
 }
 
 .serviceLink:hover {
-  color: #818cf8;
+  color: #333;
 }
 
-.serviceLink:hover::after {
-  width: 100%;
+.serviceLink:hover .linkArrow {
+  transform: translateX(5px);
 }
 
 @media (max-width: 768px) {
   .services {
     padding: 4rem 1rem;
   }
-  
+
   .sectionTitle {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
-  
+
   .sectionDescription {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
   }
-  
+
   .serviceGrid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .serviceCard {
+    padding: 1.5rem;
   }
 } 

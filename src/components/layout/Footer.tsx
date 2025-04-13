@@ -50,8 +50,8 @@ const Footer = () => {
           <div className={styles.contactInfo}>
             <p className={styles.contactItem}>
               <span className={styles.label}>Email:</span>
-              <a href="mailto:hello@vibecoding.com" className={styles.contactLink}>
-                hello@vibecoding.com
+              <a href="mailto:team@plixera.com" className={styles.contactLink}>
+                team@plixera.com
               </a>
             </p>
             <p className={styles.contactItem}>

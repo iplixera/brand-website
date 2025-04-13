@@ -12,6 +12,7 @@ type ContactData = {
 type ApiResponse = {
   success: boolean;
   message: string;
+  error?: string;
 };
 
 export default async function handler(
@@ -34,22 +35,52 @@ export default async function handler(
       });
     }
 
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Invalid email format' 
+      });
+    }
+
+    // Check if SMTP configuration is set
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error('SMTP configuration is missing');
+      return res.status(500).json({ 
+        success: false, 
+        message: 'Email service is not configured properly',
+        error: 'SMTP configuration is missing'
+      });
+    }
+
     // Create a transporter using SMTP
-    // Note: In production, you should use environment variables for these values
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.example.com',
+      host: process.env.SMTP_HOST,
       port: parseInt(process.env.SMTP_PORT || '587'),
       secure: process.env.SMTP_SECURE === 'true',
       auth: {
-        user: process.env.SMTP_USER || 'user@example.com',
-        pass: process.env.SMTP_PASS || 'password',
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
+    // Verify SMTP connection
+    try {
+      await transporter.verify();
+    } catch (error) {
+      console.error('SMTP connection error:', error);
+      return res.status(500).json({ 
+        success: false, 
+        message: 'Failed to connect to email server',
+        error: error instanceof Error ? error.message : 'Unknown SMTP error'
+      });
+    }
+
     // Email content
     const mailOptions = {
-      from: process.env.SMTP_FROM || 'contact@plixera.com',
-      to: process.env.CONTACT_EMAIL || 'team@plixera.com',
+      from: process.env.SMTP_FROM || process.env.SMTP_USER,
+      to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
       subject: `New Contact Form Submission: ${service}`,
       text: `
         Name: ${name}
@@ -81,7 +112,8 @@ export default async function handler(
     console.error('Error sending email:', error);
     return res.status(500).json({ 
       success: false, 
-      message: 'Failed to send message. Please try again later.' 
+      message: 'Failed to send message. Please try again later.',
+      error: error instanceof Error ? error.message : 'Unknown error'
     });
   }
 } 

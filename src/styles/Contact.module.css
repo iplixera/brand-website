@@ -1,26 +1,13 @@
 .contactPage {
   min-height: 100vh;
-  background-color: var(--background-color);
-  position: relative;
-  overflow: hidden;
-}
-
-.contactPage::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05) 0%, rgba(15, 23, 42, 0) 70%);
-  z-index: 1;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: #ffffff;
 }
 
 .hero {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  color: white;
-  padding: 6rem 0;
+  padding: 120px 0 60px;
   text-align: center;
+  background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(26,26,26,0.9) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -30,72 +17,102 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
   z-index: 1;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 20px;
   position: relative;
   z-index: 2;
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
+  background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
 }
 
 .description {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   max-width: 600px;
   margin: 0 auto;
-  opacity: 0.9;
-  font-weight: 500;
+  color: #cccccc;
+  line-height: 1.6;
 }
 
 .content {
-  padding: 4rem 0;
+  padding: 60px 0;
+  position: relative;
 }
 
-.whatsappSection {
-  max-width: 720px;
-  margin: 0 auto 4rem;
+.content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(255,255,255,0.03) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(255,255,255,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .whatsappCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px;
   text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
 }
 
 .whatsappCard::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 70%);
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(37,211,102,0.1) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
-}
-
-.whatsappCard:hover {
-  transform: translateY(-5px);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
 }
 
 .whatsappCard:hover::before {
@@ -103,179 +120,137 @@
 }
 
 .whatsappIcon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: rgba(37,211,102,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.whatsappIcon::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid rgba(37,211,102,0.2);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 
 .whatsappTitle {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--text-color);
-  letter-spacing: -0.025em;
+  color: #ffffff;
 }
 
 .whatsappDescription {
-  font-size: 1.125rem;
-  color: var(--secondary-color);
+  font-size: 1.1rem;
+  color: #cccccc;
   margin-bottom: 2rem;
   line-height: 1.6;
 }
 
 .whatsappButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-  color: white;
-  font-weight: 600;
-  font-size: 1.125rem;
+  display: inline-block;
   padding: 1rem 2rem;
-  border-radius: 8px;
+  background: #25D366;
+  color: #ffffff;
   text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.whatsappButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
 }
 
 .whatsappButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 5px 15px rgba(37,211,102,0.3);
 }
 
-.infoSection {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.infoTitle {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: var(--text-color);
-  margin-bottom: 1.5rem;
-  text-align: center;
-  letter-spacing: -0.025em;
-}
-
-.infoGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.infoCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.infoCard:hover {
-  transform: translateY(-4px);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
-}
-
-.infoIcon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.infoCardTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-}
-
-.infoCardContent {
-  color: var(--secondary-color);
-}
-
-.socialLinks {
-  text-align: center;
-}
-
-.socialTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text-color);
-  margin-bottom: 1rem;
-  letter-spacing: -0.025em;
-}
-
-.socialGrid {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.socialGrid a {
-  color: var(--text-color);
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.socialGrid a:hover {
-  background: rgba(99, 102, 241, 0.1);
-  border-color: rgba(99, 102, 241, 0.3);
-  transform: translateY(-2px);
+.whatsappButton:hover::before {
+  left: 100%;
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 100px 0 40px;
+  }
+
   .title {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .description {
-    font-size: 1.25rem;
-  }
-
-  .hero {
-    padding: 4rem 0;
-  }
-
-  .content {
-    padding: 2rem 0;
+    font-size: 1.1rem;
   }
 
   .whatsappCard {
-    padding: 2rem;
+    padding: 30px;
   }
 
   .whatsappTitle {
-    font-size: 1.875rem;
+    font-size: 1.75rem;
   }
 
   .whatsappDescription {
     font-size: 1rem;
   }
+}
 
-  .whatsappButton {
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
     font-size: 1rem;
-    padding: 0.875rem 1.75rem;
   }
 
-  .infoGrid {
-    grid-template-columns: 1fr;
+  .whatsappCard {
+    padding: 20px;
   }
 
-  .socialGrid {
-    flex-direction: column;
-    align-items: center;
+  .whatsappIcon {
+    width: 60px;
+    height: 60px;
   }
 
-  .socialGrid a {
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
+  .whatsappTitle {
+    font-size: 1.5rem;
   }
 } 

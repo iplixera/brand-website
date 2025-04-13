@@ -50,14 +50,14 @@ const Hero = () => {
           MVPs with Speed, Soul, and Flow
         </motion.h1>
         <motion.p className={styles.subtitle} variants={itemVariants}>
-          Welcome to Vibe Coding, where we transform your ideas into reality with precision and style.
+          Welcome to Plixera, where we transform your ideas into reality with precision and style.
         </motion.p>
         <motion.div className={styles.ctaContainer} variants={itemVariants}>
-          <Link href="/contact" className={styles.primaryCta}>
-            Ready to Vibe?
+          <Link href="/contact" passHref legacyBehavior>
+            <a className={styles.primaryCta}>Ready to Start?</a>
           </Link>
-          <Link href="/services" className={styles.secondaryCta}>
-            Explore Our Services
+          <Link href="/services" passHref legacyBehavior>
+            <a className={styles.secondaryCta}>Explore Our Services</a>
           </Link>
         </motion.div>
 

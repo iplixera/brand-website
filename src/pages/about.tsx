@@ -24,22 +24,28 @@ const About = () => {
 
   const team = [
     {
+      name: 'Ethan Reynolds',
+      role: 'CEO & Founder',
+      bio: 'Visionary leader with 10+ years of experience in software development and business strategy. Passionate about transforming ideas into successful products.',
+      image: '/images/team/ceo-ai.jpg'
+    },
+    {
       name: 'Alex Chen',
-      role: 'Technical Lead',
-      bio: 'Experienced software architect with expertise in scalable systems and AI integration.',
-      image: '/team/tech-lead.jpg'
+      role: 'CTO',
+      bio: 'Technical visionary with expertise in scalable architecture, AI integration, and cutting-edge technologies. Leading our technical innovation.',
+      image: '/images/team/cto-ai.jpg'
     },
     {
       name: 'Sarah Johnson',
-      role: 'Product Strategist',
-      bio: 'Product specialist focused on translating business needs into innovative digital solutions.',
-      image: '/team/product-strategist.jpg'
+      role: 'CPO',
+      bio: 'Product strategist focused on translating business needs into innovative digital solutions. Expert in user-centered design and product development.',
+      image: '/images/team/cpo-ai.jpg'
     },
     {
       name: 'Marcus Rodriguez',
-      role: 'UX/UI Designer',
-      bio: 'Creative designer passionate about creating intuitive and engaging user experiences.',
-      image: '/team/designer.jpg'
+      role: 'Lead Designer',
+      bio: 'Creative designer passionate about creating intuitive and engaging user experiences. Specializes in modern UI/UX design.',
+      image: '/images/team/designer-ai.jpg'
     }
   ];
 
@@ -105,7 +111,7 @@ const About = () => {
             </div>
 
             <div className={styles.team}>
-              <h2>Our Team</h2>
+              <h2>Leadership Team</h2>
               <div className={styles.teamGrid}>
                 {team.map((member, index) => (
                   <motion.div 
