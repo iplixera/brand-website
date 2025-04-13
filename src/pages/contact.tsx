@@ -48,7 +48,7 @@ const Contact = () => {
                   Prefer to chat? Reach out to us on WhatsApp for quick responses and real-time communication.
                 </p>
                 <a 
-                  href="https://wa.me/14155552671" 
+                  href="https://wa.me/971585544057" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className={styles.whatsappButton}
