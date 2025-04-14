@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import styles from './Navigation.module.css';
+import { motion, AnimatePresence } from 'framer-motion';
+import styles from '@/styles/Navigation.module.css';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,28 +10,70 @@ const Navigation = () => {
     setIsOpen(!isOpen);
   };
 
+  const menuItems = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Services', href: '/services' },
+    { label: 'Plugins', href: '/plugins' },
+    { label: 'Pricing', href: '/pricing' },
+    { label: 'Contact', href: '/contact' },
+  ];
+
   return (
     <nav className={styles.nav}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
-          <div className={styles.logoContainer}>
-            <span className={styles.logoText}>Plixera</span>
-            <span className={styles.logoSlogan}>Vibe Coding • Creative Tech</span>
-          </div>
+          <span className={styles.logoText}>Plixera</span>
+          <span className={styles.logoSlogan}>Creative Tech</span>
         </Link>
-        <button className={styles.menuButton} onClick={toggleMenu} aria-label="Toggle menu">
+
+        {/* Desktop Menu */}
+        <div className={styles.desktopMenu}>
+          {menuItems.map((item) => (
+            <Link 
+              key={item.href} 
+              href={item.href}
+              className={styles.menuItem}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+          className={`${styles.menuButton} ${isOpen ? styles.active : ''}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <div className={`${styles.menu} ${isOpen ? styles.open : ''}`}>
-          <ul className={styles.menuList}>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/careers">Careers</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-          </ul>
-        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              className={styles.mobileMenu}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+            >
+              {menuItems.map((item) => (
+                <Link 
+                  key={item.href} 
+                  href={item.href}
+                  className={styles.menuItem}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );
